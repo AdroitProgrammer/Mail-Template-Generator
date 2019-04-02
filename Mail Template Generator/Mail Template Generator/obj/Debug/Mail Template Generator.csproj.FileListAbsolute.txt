@@ -1,0 +1,13 @@
+C:\Users\jb4817\source\repos\Mail Template Generator\Mail Template Generator\bin\Debug\Mail Template Generator.exe.config
+C:\Users\jb4817\source\repos\Mail Template Generator\Mail Template Generator\bin\Debug\Mail Template Generator.exe
+C:\Users\jb4817\source\repos\Mail Template Generator\Mail Template Generator\bin\Debug\Mail Template Generator.pdb
+C:\Users\jb4817\source\repos\Mail Template Generator\Mail Template Generator\obj\Debug\Mail_Template_Generator.Form1.resources
+C:\Users\jb4817\source\repos\Mail Template Generator\Mail Template Generator\obj\Debug\Mail_Template_Generator.Properties.Resources.resources
+C:\Users\jb4817\source\repos\Mail Template Generator\Mail Template Generator\obj\Debug\Mail Template Generator.csproj.GenerateResource.cache
+C:\Users\jb4817\source\repos\Mail Template Generator\Mail Template Generator\obj\Debug\Mail Template Generator.csproj.CoreCompileInputs.cache
+C:\Users\jb4817\source\repos\Mail Template Generator\Mail Template Generator\obj\Debug\Mail Template Generator.exe
+C:\Users\jb4817\source\repos\Mail Template Generator\Mail Template Generator\obj\Debug\Mail Template Generator.pdb
+C:\Users\jb4817\source\repos\Mail Template Generator\Mail Template Generator\obj\Debug\Mail Template Generator.csprojAssemblyReference.cache
+C:\Users\jb4817\source\repos\Mail Template Generator\Mail Template Generator\bin\Debug\IronOcr.dll
+C:\Users\jb4817\source\repos\Mail Template Generator\Mail Template Generator\bin\Debug\IronOcr.xml
+C:\Users\jb4817\source\repos\Mail Template Generator\Mail Template Generator\obj\Debug\Mail Template Generator.csproj.CopyComplete
