@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
+using System.Speech;
+using System.Speech.Recognition;
 
 namespace Mail_Template_Generator
 {
@@ -19,16 +21,19 @@ namespace Mail_Template_Generator
         }
 
         private AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+        private SpeechRecognitionEngine speechRecog = new SpeechRecognitionEngine();
         private List<string> CSV = new List<string>();
         private Dictionary<string, string> namesAndAddresses = new Dictionary<string, string>();
         private MailTemplate mailTemplate = new MailTemplate();
+        private string filename;
         List<Bitmap> GeneratedImages = new List<Bitmap>();
         private const int width = 1700, height = 2200;
 
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            var filename = @"C:\Users\jb4817\Desktop\Mailing Templates for  Spring 2019\Fake Names.csv";
+            filename = @"C:\Users\jb4817\Desktop\Mailing Templates for  Spring 2019\Adjunct Addresses Spring 2019 - Sheet1.csv";
+            //filename = @"C:\Users\jb4817\Desktop\Mailing Templates for  Spring 2019\Fake Names.csv";
             listView1.SmallImageList = new ImageList();
             listView1.LargeImageList = new ImageList();
             Load_CSV(filename);
@@ -37,6 +42,28 @@ namespace Mail_Template_Generator
             var collection = new AutoCompleteStringCollection();
             collection.AddRange(getNames());
             textBox1.AutoCompleteCustomSource = collection;
+            loadSpeechRecog();
+        }
+
+        public void loadSpeechRecog()
+        {
+            speechRecog.SpeechRecognized += SpeechRecog_SpeechRecognized;
+            speechRecog.SetInputToDefaultAudioDevice();
+            Choices choices = new Choices(getNames());
+            GrammarBuilder builder = new GrammarBuilder(choices);
+            speechRecog.LoadGrammar(new Grammar(builder));
+            speechRecog.RecognizeAsync(RecognizeMode.Multiple);
+        }
+
+        private void SpeechRecog_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
+        {
+            string fullName = "";
+            foreach(RecognizedWordUnit name in e.Result.Words)
+            {
+                fullName += name.Text + " ";
+            }
+            string final = fullName.Substring(0, fullName.Length - 1);
+            addToPending(final);
         }
 
         private string[] getNames()
@@ -71,6 +98,9 @@ namespace Mail_Template_Generator
 
         private void listBox1_MouseClick(object sender, MouseEventArgs e)
         {
+            if (listBox1.SelectedIndex == -1)
+                return;
+
             var selectedItem = listBox1.Items[listBox1.SelectedIndex].ToString();
 
             foreach (KeyValuePair<string, string> kvp in namesAndAddresses)
@@ -86,6 +116,10 @@ namespace Mail_Template_Generator
 
         private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+
+            if (listBox1.SelectedIndex == -1)
+                return;
+
             var selectedItem = listBox1.Items[listBox1.SelectedIndex].ToString();
             addToPending(selectedItem);
         }
@@ -241,6 +275,25 @@ namespace Mail_Template_Generator
             bitmap.Save(savePath + "\\Mail Template #" + (currentNumb + 1 ) + ".jpg");
 
             MessageBox.Show("Template Exported!", "Completed Exportation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void newUserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NewUser userForm = new NewUser(this);
+            userForm.Show();
+        }
+
+
+        public void add_To_CSV(string name , string address)
+        {
+            using (StreamWriter sw = new StreamWriter(filename,true))
+            {
+                sw.WriteLine(name + "," + "\"" + address + "\"");
+            }
+
+            namesAndAddresses.Add(name, address);
+            listBox1.Items.Add(name);
+            addToPending(name);
         }
 
         private void Load_CSV(string filename)

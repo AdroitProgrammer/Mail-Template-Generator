@@ -46,6 +46,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -67,7 +69,8 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.loadToolStripMenuItem,
             this.saveToolStripMenuItem,
-            this.exportToolStripMenuItem});
+            this.exportToolStripMenuItem,
+            this.addToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -121,14 +124,14 @@
             // currentTemplateToolStripMenuItem
             // 
             this.currentTemplateToolStripMenuItem.Name = "currentTemplateToolStripMenuItem";
-            this.currentTemplateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.currentTemplateToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.currentTemplateToolStripMenuItem.Text = "Current Template";
             this.currentTemplateToolStripMenuItem.Click += new System.EventHandler(this.currentTemplateToolStripMenuItem_Click);
             // 
             // allTemplatesToolStripMenuItem
             // 
             this.allTemplatesToolStripMenuItem.Name = "allTemplatesToolStripMenuItem";
-            this.allTemplatesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.allTemplatesToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.allTemplatesToolStripMenuItem.Text = "All Templates";
             this.allTemplatesToolStripMenuItem.Click += new System.EventHandler(this.allTemplatesToolStripMenuItem_Click);
             // 
@@ -212,6 +215,21 @@
             this.tabPage1.Text = "Template 1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // addToolStripMenuItem
+            // 
+            this.addToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newUserToolStripMenuItem});
+            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem.Text = "Add";
+            // 
+            // newUserToolStripMenuItem
+            // 
+            this.newUserToolStripMenuItem.Name = "newUserToolStripMenuItem";
+            this.newUserToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newUserToolStripMenuItem.Text = "New User";
+            this.newUserToolStripMenuItem.Click += new System.EventHandler(this.newUserToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -256,6 +274,8 @@
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem currentTemplateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem allTemplatesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newUserToolStripMenuItem;
     }
 }
 
